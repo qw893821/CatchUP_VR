@@ -8,25 +8,24 @@ public enum OccpuyType{
 }
 public class GameManager : MonoBehaviour
 {
-    private static GameManager _instance;
-    public static GameManager gm
-    {
-        get { return _instance; }
-    }
+    public static GameManager gm { get; private set; }
     public Vector3 gridStartPos;
     public float width;
     public Dictionary<int, List<Grid>> gridsDic/* = new Dictionary<int, List<Grid>>()*/;
 
     float totalWidth;
     float totalLength;
-    // Use this for initialization
+    private void Awake()
+    {
+        if (gm == null)
+        {
+            gm = this;
+        }
+        else { Destroy(this); }
+    }
     void Start()
     {
-        if (_instance!=this)
-        {
-            _instance = this;
-        }
-        else { Destroy(gameObject); }
+        
         width = 0.5f;
         /*Dictionary<int, List<Grid>> */gridsDic = new Dictionary<int, List<Grid>>();
         gridStartPos = Vector3.zero - new Vector3(totalWidth / 2 + width, 0f, -10.0f);

@@ -3,25 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour {
-    private static Spawner _instance;
-    public static Spawner instance
-    {
-        get { return _instance; }
-    }
+    public static Spawner instance { get; private set; }
     //a test cube
-	public GameObject cube;
+    public GameObject cube;
     private void Start()
     {
-        if (_instance==null)
-        {
-            _instance = this;
-        }
-        else { Destroy(gameObject); }
+        InvokeRepeating("InstCube", 1.0f, 5.0f);
     }
     private void Awake()
     {
-        Debug.Log(GameManager.gm.width);
-        InvokeRepeating("InstCube", 1.0f, 5.0f);    
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else { Destroy(gameObject); }
     }
 
     void InstCube()
@@ -33,10 +28,9 @@ public class Spawner : MonoBehaviour {
     {
         Vector3 pos;
         float heightOffset=10.0f;
-        //int x = Random.Range(0,10);
-        //int y = Random.Range(0,30);
-        int x = 0;
-        int y = 0;
+        int x = Random.Range(0, 10);
+        int y = Random.Range(0, 30);
+
         pos = GameManager.gm.gridsDic[x][y].pos;
         pos += new Vector3(0, heightOffset, 0);
         return pos;
