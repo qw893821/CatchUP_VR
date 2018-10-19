@@ -38,7 +38,6 @@ public class Inputmanager : MonoBehaviour {
         layerMask = 1 << 9;
         if(Physics.Raycast(mainCamera.transform.position,mainCamera.transform.forward,out hit,layerMask))
         {
-            Debug.Log(hit.transform.gameObject.layer);
             Vector3 hitpos;
             hitpos = hit.point;
             Instantiate(testgo,hitpos,Quaternion.identity);
