@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     float totalWidth;
     float totalLength;
+    public Vector3 trashPos;
     private void Awake()
     {
         if (gm == null)
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
             gm = this;
         }
         else { Destroy(this); }
+        trashPos = new Vector3(100,100,100);
     }
     void Start()
     {
@@ -60,7 +62,8 @@ public class GameManager : MonoBehaviour
             }
         }
 
-
     }
+
+    
 }
 

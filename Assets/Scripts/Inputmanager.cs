@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Inputmanager : MonoBehaviour {
     public GameObject mainCamera;
-    public GameObject testgo;
     public GameObject textGO;
     Text text;
 
@@ -40,7 +39,14 @@ public class Inputmanager : MonoBehaviour {
         {
             Vector3 hitpos;
             hitpos = hit.point;
-            Instantiate(testgo,hitpos,Quaternion.identity);
+            //Instantiate(catcherGO,hitpos,Quaternion.identity);
+            foreach(KeyValuePair<int,List<Grid>> myDic in GameManager.gm.gridsDic)
+            {
+                foreach(Grid gd in myDic.Value)
+                {
+                    gd.InGrid(hitpos);
+                }
+            }
         }
         else
         {
