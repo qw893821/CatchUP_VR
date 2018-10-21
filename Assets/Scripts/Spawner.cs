@@ -33,8 +33,9 @@ public class Spawner : MonoBehaviour {
         //heightOffset is 0 now because the new cube model use a image as shadow.
         Vector3 pos;
         float heightOffset=0f;
-        int x = Random.Range(0, 10);
-        int y = Random.Range(0, 30);
+        //2 and 6 are the row can col size;
+        int x = Random.Range(0, 5);
+        int y = Random.Range(0, 10);
 
         pos = GameManager.gm.gridsDic[x][y].pos;
         pos += new Vector3(0, heightOffset, 0);

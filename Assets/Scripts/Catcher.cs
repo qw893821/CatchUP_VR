@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cathcher : MonoBehaviour {
+public class Catcher : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +18,7 @@ public class Cathcher : MonoBehaviour {
     {
         if (other.tag == "Ball")
         {
-            Debug.Log("catch a ball");
+            //Debug.Log("catch a ball");
             Destroy(other.transform.parent.gameObject);
             Destroy(this.gameObject);
         }

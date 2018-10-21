@@ -28,20 +28,20 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         
-        width = 0.5f;
+        width = 1.5f;
         /*Dictionary<int, List<Grid>> */gridsDic = new Dictionary<int, List<Grid>>();
         gridStartPos = Vector3.zero - new Vector3(totalWidth / 2 + width, 0f, -10.0f);
         totalWidth = 30.0f;
-        totalLength = 10.0f;
+        totalLength = 15.0f;
         //width is 0.5, so the gird is 1.0f width. and the grid creation loop could use ++ operator
-        for (int x = 0; x < totalLength; x++)
+        for (int x = 0; x < totalLength/(int)(width*2); x++)
         {
             gridStartPos= Vector3.zero - new Vector3(totalWidth / 2 + width, 0f, -10.0f - x * 2 * width);
             if (!gridsDic.ContainsKey(x))
             {
                 gridsDic.Add(x,new List<Grid>());
             }
-            for (int y = 0; y < totalWidth; y++)
+            for (int y = 0; y < totalWidth/ (int)(width * 2); y++)
             { 
                 gridsDic[x].Add(new Grid());
                 gridsDic[x][y].InitialGrid(gridStartPos,width);
