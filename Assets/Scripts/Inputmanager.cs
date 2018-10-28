@@ -9,12 +9,10 @@ public class Inputmanager : MonoBehaviour {
     Text text,text2;
     
 
-    int testCount;
 	// Use this for initialization
 	void Start () {
         text = textGO. GetComponent<Text>();
         text2 = debugText.GetComponent<Text>();
-        testCount = 0;
 	}
 	
 	// Update is called once per frame

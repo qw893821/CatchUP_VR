@@ -3,7 +3,7 @@
 	Properties
 	{
 		_MainTex ("Texture", 2D) = "white" {}
-		_Radius("Radius",Range(3,5)) = 4
+		_Radius("Radius",Int) = 4
 		_Color("Color",Color)=(1.0,1.0,1.0,1.0)
 	}
 	SubShader
@@ -29,7 +29,7 @@
 			{
 				float2 uv : TEXCOORD0;
 				float4 vertex : SV_POSITION;
-				float2 screenPos:TEXCOORD1;
+				float2 screenPos:TEXCOORD2;
 			};
 
 			v2f vert (appdata v)
@@ -53,11 +53,11 @@
 				/*fixed4 colRed = (1.0,0.0,0.0,0.0);*/
 				half2 center;
 				half2 currentVert;
-				center = (_ScreenParams.x / 2, _ScreenParams.y / 2);
-				currentVert = (i.screenPos.x, i.screenPos.y);
-				fixed4 col= tex2D(_MainTex, i.uv);
-				col = lerp(col, _Color, step(0.0,_Radius-length(currentVert-center)));
-				
+				center = i.screenPos*_ScreenParams.xy;
+				center.x /= 2;
+				currentVert = (i.vertex.x,i.vertex.y);
+				float4 col= tex2D(_MainTex, i.uv);
+				col = lerp(col,_Color, step(0.0,_Radius-distance(currentVert,center)));				
 				return col;
 			}
 			ENDCG
