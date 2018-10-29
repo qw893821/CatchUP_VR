@@ -6,7 +6,9 @@ using UnityEngine;
 public class Grid {
     public OccpuyType type;//what type of thing have occupy the 
     public Vector3 pos;//position of the grid
+    //public bool isdead;//still no need this value at this moment;
     float width;//half width of the grid
+    public int myRow;//the hash index/key of the grid
 
     public void DrawGrid()
     {
@@ -18,11 +20,12 @@ public class Grid {
         Debug.DrawLine(pos2, pos3);
     }
 
-    public void InitialGrid(Vector3 pos,float width)
+    public void InitialGrid(Vector3 pos,float width,int myrow)
     {
         this.pos = pos;
         this.width = width;
-
+        this.myRow = myrow;
+        //this.isdead = false;
     }
 	
     public void GoodOccupy()
@@ -42,7 +45,6 @@ public class Grid {
         if ((hitPos.x <= pos.x + width) && (hitPos.x > pos.x-width) && (hitPos.z <= pos.z + width )&& (hitPos.z > pos.z - width))
         {
             Spawner.instance.CatechSpawner(this.pos);
-            
         }
     }
 }

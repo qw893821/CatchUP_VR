@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour {
     public static Spawner instance { get; private set; }
     //a test cube
-    public GameObject cube;
+    public GameObject cube;//cube model is repalce by another one.
     public GameObject catcherGO;
     private void Start()
     {
@@ -24,24 +24,39 @@ public class Spawner : MonoBehaviour {
     //Instantiate a cube at picked pos
     void InstCube()
     {
-        Instantiate(cube,PickPos(),Quaternion.identity);
+        Grid grid;
+        grid = FindGrid();
+        //Instantiate(cube,PickPos(),Quaternion.identity);
+        var newegg=Instantiate(cube,grid.pos,Quaternion.identity);
+        Debug.Log(newegg);
+        newegg.GetComponentInChildren<HitGround>().targetGrid = grid;
     }
 
     //pick a position in the Grid list
-    Vector3 PickPos()
+    //Vector3 PickPos()
+    //{
+
+    //    //heightOffset is 0 now because the new cube model use a image as shadow.
+    //    Vector3 pos;
+    //    float heightOffset=0f;
+    //    //5 and 10 are the row can col size;
+    //    //int x = Random.Range(0, GameManager.gm.gridsDic.Count);
+    //    //int y = Random.Range(0, 10);
+
+    //    pos = FindGrid().pos;
+    //    pos += new Vector3(0, heightOffset, 0);
+    //    return pos;
+    //}
+
+
+    //find a grid 
+    Grid FindGrid()
     {
-        //heightOffset is 0 now because the new cube model use a image as shadow.
-        Vector3 pos;
-        float heightOffset=0f;
-        //2 and 6 are the row can col size;
-        int x = Random.Range(0, 5);
-        int y = Random.Range(0, 10);
-
-        pos = GameManager.gm.gridsDic[x][y].pos;
-        pos += new Vector3(0, heightOffset, 0);
-        return pos;
+        int x = Random.Range(0, GameManager.gm.gridsDic.Count);
+        int y = Random.Range(0, GameManager.gm.gridsDic[x].Count);
+        Grid grid = GameManager.gm.gridsDic[x][y];
+        return grid;
     }
-
 
     public void CatechSpawner(Vector3 pos)
     {

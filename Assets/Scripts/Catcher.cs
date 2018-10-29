@@ -18,7 +18,7 @@ public class Catcher : MonoBehaviour {
     {
         if (other.tag == "Ball")
         {
-            //Debug.Log("catch a ball");
+            Debug.Log("catch a ball");
             Destroy(other.transform.parent.gameObject);
             Destroy(this.gameObject);
         }

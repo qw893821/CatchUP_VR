@@ -303,6 +303,7 @@
     <Compile Include="Assets\Scripts\Catcher.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Grid.cs" />
+    <Compile Include="Assets\Scripts\HitGround.cs" />
     <Compile Include="Assets\Scripts\Inputmanager.cs" />
     <Compile Include="Assets\Scripts\RedDotEffect.cs" />
     <Compile Include="Assets\Scripts\Spawner.cs" />

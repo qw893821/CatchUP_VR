@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public static GameManager gm { get; private set; }
     public Vector3 gridStartPos;
     public float width;
-    public Dictionary<int, List<Grid>> gridsDic/* = new Dictionary<int, List<Grid>>()*/;
+    public Dictionary<int, List<Grid>> gridsDic;
 
     float totalWidth;
     float totalLength;
@@ -44,11 +44,10 @@ public class GameManager : MonoBehaviour
             for (int y = 0; y < totalWidth/ (int)(width * 2); y++)
             { 
                 gridsDic[x].Add(new Grid());
-                gridsDic[x][y].InitialGrid(gridStartPos,width);
+                gridsDic[x][y].InitialGrid(gridStartPos,width,x);
                 gridStartPos += new Vector3(2*width,0f,0f);
             }
         }
-
     }
 
     // Update is called once per frame
@@ -64,6 +63,10 @@ public class GameManager : MonoBehaviour
 
     }
 
-    
+    //remove a grid when is is marked as dead
+    public void RemoveGrid(Grid grid)
+    {
+        gridsDic[grid.myRow].Remove(grid);
+    }
 }
 
