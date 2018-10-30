@@ -41,6 +41,7 @@ public class Inputmanager : MonoBehaviour {
         {
             Vector3 hitpos;
             hitpos = hit.point;
+            //could compare the column first then row to save performance. will change it later
             foreach (KeyValuePair<int, List<Grid>> myDic in GameManager.gm.gridsDic)
             {
                 foreach (Grid gd in myDic.Value)

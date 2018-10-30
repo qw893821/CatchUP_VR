@@ -7,10 +7,13 @@ public class Spawner : MonoBehaviour {
     //a test cube
     public GameObject cube;//cube model is repalce by another one.
     public GameObject catcherGO;
+    [SerializeField]
+    float spawnTime;//time of egg spawns
+
     private void Start()
     {
         //when game start create a cube every 5s
-        InvokeRepeating("InstCube", 1.0f, 5.0f);
+        InvokeRepeating("InstCube", 1.0f, spawnTime);
     }
     private void Awake()
     {
@@ -19,6 +22,7 @@ public class Spawner : MonoBehaviour {
             instance = this;
         }
         else { Destroy(gameObject); }
+        spawnTime = 2.0f;
     }
 
     //Instantiate a cube at picked pos
@@ -28,7 +32,6 @@ public class Spawner : MonoBehaviour {
         grid = FindGrid();
         //Instantiate(cube,PickPos(),Quaternion.identity);
         var newegg=Instantiate(cube,grid.pos,Quaternion.identity);
-        Debug.Log(newegg);
         newegg.GetComponentInChildren<HitGround>().targetGrid = grid;
     }
 

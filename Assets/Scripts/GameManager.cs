@@ -60,13 +60,26 @@ public class GameManager : MonoBehaviour
                 gd.DrawGrid();
             }
         }
-
+        GameOverTest();
     }
 
     //remove a grid when is is marked as dead
     public void RemoveGrid(Grid grid)
     {
         gridsDic[grid.myRow].Remove(grid);
+    }
+    
+    //whenever one row is fully hit by egg game end.
+    void GameOverTest()
+    {
+        foreach (KeyValuePair<int, List<Grid>> myDic in gridsDic)
+        {
+            if (myDic.Value.Count==0)
+            {
+                Time.timeScale = 0.01f;
+                Debug.Log("game over");
+            }
+        }
     }
 }
 
