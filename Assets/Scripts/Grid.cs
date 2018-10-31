@@ -5,7 +5,7 @@ using UnityEngine;
 //grid hold properity deternmines if the location can be spwan things or not
 public class Grid {
     private OccpuyType _type;
-    public OccpuyType Type { get; set; }//what type of thing have occupy the 
+    public OccpuyType Type { get {return _type; } set {_type=value; } }//what type of thing have occupy the 
     public Vector3 pos;//position of the grid
     //public bool isdead;//still no need this value at this moment;
     float width;//half width of the grid

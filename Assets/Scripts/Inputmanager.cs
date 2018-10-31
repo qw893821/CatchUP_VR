@@ -22,9 +22,7 @@ public class Inputmanager : MonoBehaviour {
         {
             ShotRay();
         }
-        float offDis;
-        offDis = Vector3.Distance(mainCamera.transform.forward,Vector3.forward);
-        text2.text = (offDis.ToString());
+        text2.text = GameManager.gm.SCORE.ToString();
 	}
 
     private void FixedUpdate()

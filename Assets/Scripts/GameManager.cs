@@ -15,7 +15,10 @@ public class GameManager : MonoBehaviour
 
     float totalWidth;
     float totalLength;
-    public Vector3 trashPos;
+
+    //game point 
+    private int _score;
+    public int SCORE { get { return _score; }set { _score = value; } }
     private void Awake()
     {
         if (gm == null)
@@ -23,7 +26,6 @@ public class GameManager : MonoBehaviour
             gm = this;
         }
         else { Destroy(this); }
-        trashPos = new Vector3(100,100,100);
     }
     void Start()
     {

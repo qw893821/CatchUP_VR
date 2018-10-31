@@ -22,7 +22,7 @@ public class Spawner : MonoBehaviour {
             instance = this;
         }
         else { Destroy(gameObject); }
-        spawnTime = 2.0f;
+        spawnTime = 4.0f;
     }
 
     //Instantiate a cube at picked pos
