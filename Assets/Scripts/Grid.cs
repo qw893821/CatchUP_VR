@@ -30,13 +30,15 @@ public class Grid {
     }
 	
     //check if the hit point is inside the grid
-    public void InGrid(Vector3 hitPos)
+    public bool InGrid(Vector3 hitPos)
     {
-        if ((hitPos.x <= pos.x + width) && (hitPos.x > pos.x-width) && (hitPos.z <= pos.z + width )&& (hitPos.z > pos.z - width))
+        if ((hitPos.x <= pos.x + width) && (hitPos.x > pos.x - width) && (hitPos.z <= pos.z + width) && (hitPos.z > pos.z - width))
         {
             //Spawner.instance.CatechSpawner(this.pos);
             InGridAction();
+            return true;
         }
+        else return false;
     }
 
     void InGridAction()

@@ -7,12 +7,13 @@ public class Inputmanager : MonoBehaviour {
     public GameObject textGO;
     public GameObject debugText;
     Text text,text2;
-    
+    Counter counter;
 
 	// Use this for initialization
 	void Start () {
         text = textGO. GetComponent<Text>();
         text2 = debugText.GetComponent<Text>();
+        counter = new Counter();
 	}
 	
 	// Update is called once per frame
@@ -44,7 +45,11 @@ public class Inputmanager : MonoBehaviour {
             {
                 foreach (Grid gd in myDic.Value)
                 {
-                    gd.InGrid(hitpos);
+                    //gd.InGrid(hitpos);
+                    if (gd.InGrid(hitpos))
+                    {
+
+                    }
                 }
             }
             text.text = "shot ray and hit";
@@ -55,4 +60,7 @@ public class Inputmanager : MonoBehaviour {
         }
         
     }
+
+    //when spawn a catcher, wait until next possible spawn
+    
 }
